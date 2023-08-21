@@ -12,7 +12,7 @@
  *
  * Return: 1 or 2;
  */
-int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
+int handle_print(const char *fmt, int *ind, va_list args, char buffer[],
 	int f, int w, int p, int s)
 {
 	int i, ulen = 0, printed_chars = -1;

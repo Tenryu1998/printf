@@ -40,8 +40,21 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
+
+void print_buffer(char buffer[], int *buffInd);
+
+/**
+ * @fmt: the format
+ * @i: index
+ * @args: va_list list of arguments
+ * @buffer: the buffer
+ * @f: flags
+ * @w: width
+ * @p: precision
+ * @s: size
+ */
 int handle_print(const char *fmt, int *i,
-va_list list, char buffer[], int flags, int width, int precision, int size);
+va_list args, char buffer[], int f, int w, int p, int s);
 
 /****************** FUNCTIONS ******************/
 
