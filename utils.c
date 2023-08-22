@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * is_printable - Evaluates if a char is printable
- * @c: Char to be evaluated.
+ * is_printable - Evaluates  printable characters
+ * @c: Characters that are  evaluated.
  *
- * Return: 1 if c is printable, 0 otherwise
+ * Return: if c is printable return 1,if not than 0
  */
 int is_printable(char c)
 {
@@ -15,11 +15,11 @@ int is_printable(char c)
 }
 
 /**
- * append_hexa_code - Append ascci in hexadecimal code to buffer
- * @buffer: Array of chars.
- * @i: Index at which to start appending.
+ * append_hexa_code - Add ascci in hexadecimal code 
+ * @buffer: Array 
+ * @i: Index 
  * @ascii_code: ASSCI CODE.
- * Return: Always 3
+ * Return:  3
  */
 int append_hexa_code(char ascii_code, char buffer[], int i)
 {
@@ -38,10 +38,10 @@ int append_hexa_code(char ascii_code, char buffer[], int i)
 }
 
 /**
- * is_digit - Verifies if a char is a digit
- * @c: Char to be evaluated
+ * is_digit - Verifies if character is infact a digit
+ * @c: Character that gets evaluated
  *
- * Return: 1 if c is a digit, 0 otherwise
+ * Return: if c is a digit return 1,if not 0 
  */
 int is_digit(char c)
 {
@@ -52,11 +52,11 @@ int is_digit(char c)
 }
 
 /**
- * convert_size_number - Casts a number to the specified size
- * @num: Number to be casted.
- * @size: Number indicating the type to be casted.
+ * convert_size_number - Converts number to a given size
+ * @num: Number 
+ * @size: size
  *
- * Return: Casted value of num
+ * Return: Converted digit
  */
 long int convert_size_number(long int num, int size)
 {
@@ -69,11 +69,11 @@ long int convert_size_number(long int num, int size)
 }
 
 /**
- * convert_size_unsgnd - Casts a number to the specified size
- * @num: Number to be casted
- * @size: Number indicating the type to be casted
+ * convert_size_unsgnd - Converts a number to given size
+ * @num: Number 
+ * @size: size
  *
- * Return: Casted value of num
+ * Return: Converted number
  */
 long int convert_size_unsgnd(unsigned long int num, int size)
 {
@@ -86,9 +86,9 @@ long int convert_size_unsgnd(unsigned long int num, int size)
 }
 
 /**
- * get_flags - Calculates active flags
- * @format: Formatted string in which to print the arguments
- * @i: take a parameter.
+ * get_flags - Calculates all the active flags
+ * @format: string format
+ * @i: parameter taker
  * Return: Flags:
  */
 int get_flags(const char *format, int *i)
@@ -119,12 +119,12 @@ int get_flags(const char *format, int *i)
 }
 
 /**
- * get_precision - Calculates the precision for printing
- * @format: Formatted string in which to print the arguments
- * @i: List of arguments to be printed.
+ * get_precision - Calculates printing precision
+ * @format: string format
+ * @i: Lists arguments of
  * @list: list of arguments.
  *
- * Return: Precision.
+ * Return: The Precision.
  */
 int get_precision(const char *format, int *i, va_list list)
 {
@@ -160,11 +160,11 @@ int get_precision(const char *format, int *i, va_list list)
 
 
 /**
- * get_size - Calculates the size to cast the argument
- * @format: Formatted string in which to print the arguments
- * @i: List of arguments to be printed.
+ * get_size - Calculates the size of argument
+ * @format: Formatted string 
+ * @i: List of arguments
  *
- * Return: Precision.
+ * Return:The  Precision.
  */
 int get_size(const char *format, int *i)
 {
@@ -185,12 +185,12 @@ int get_size(const char *format, int *i)
 }
 
 /**
- * get_width - Calculates the width for printing
- * @format: Formatted string in which to print the arguments.
- * @i: List of arguments to be printed.
+ * get_width - gets the actual  width for printing
+ * @format: Formatted string 
+ * @i: List arguments of.
  * @list: list of arguments.
  *
- * Return: width.
+ * Return:The width.
  */
 int get_width(const char *format, int *i, va_list list)
 {
@@ -220,16 +220,16 @@ int get_width(const char *format, int *i, va_list list)
 }
 
 /**
- * handle_print - Prints an argument based on its type
- * @fmt: Formatted string in which to print the arguments.
- * @list: List of arguments to be printed.
+ * handle_print - Prints argument
+ * @fmt: Formatted string
+ * @list: List of arguments
  * @ind: ind.
- * @buffer: Buffer array to handle print.
- * @flags: Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: 1 or 2;
+ * @buffer: Buffer.
+ * @flags: Calculates all the  active flags
+ * @width: get the width.
+ * @precision: The Precision specification
+ * @size: Size  specifier
+ * Return: 1 or 2 gets returned
  */
 int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
@@ -269,15 +269,15 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 }
 
 /**
- * handle_write_char - Prints a string
- * @c: char types.
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags.
- * @width: get width.
- * @precision: precision specifier
- * @size: Size specifier
+ * handle_write_char - Prints  string
+ * @c: Types of chars
+ * @buffer: Buffer 
+ * @flags:  Calculates all the  active flags.
+ * @width: get the width.
+ * @precision: precision specification
+ * @size: Size specification
  *
- * Return: Number of chars printed.
+ * Return: Number
  */
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size)
@@ -313,16 +313,16 @@ int handle_write_char(char c, char buffer[],
 
 /************************* WRITE NUMBER *************************/
 /**
- * write_number - Prints a string
- * @is_negative: Lista of arguments
- * @ind: char types.
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: precision specifier
- * @size: Size specifier
+ * write_number - Prints  string
+ * @is_negative: List  arguments of
+ * @ind: tpes of chars.
+ * @buffer: Buffer 
+ * @flags:  Calculates all the  active flags
+ * @width: get the width.
+ * @precision: precision specification
+ * @size: Size specification
  *
- * Return: Number of chars printed.
+ * Return: Number 
  */
 int write_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
@@ -346,17 +346,17 @@ int write_number(int is_negative, int ind, char buffer[],
 }
 
 /**
- * write_num - Write a number using a bufffer
- * @ind: Index at which the number starts on the buffer
+ * write_num - Write number
+ * @ind: Index 
  * @buffer: Buffer
- * @flags: Flags
- * @width: width
- * @prec: Precision specifier
- * @length: Number length
- * @padd: Pading char
- * @extra_c: Extra char
+ * @flags: The Flags
+ * @width: The width
+ * @prec: Precision specification
+ * @length:  length
+ * @padd: The Pading character
+ * @extra_c: The Extra chaacterr
  *
- * Return: Number of printed chars.
+ * Return: Number
  */
 int write_num(int ind, char buffer[],
 	int flags, int width, int prec,
@@ -405,16 +405,16 @@ int write_num(int ind, char buffer[],
 }
 
 /**
- * write_unsgnd - Writes an unsigned number
- * @is_negative: Number indicating if the num is negative
- * @ind: Index at which the number starts in the buffer
- * @buffer: Array of chars
- * @flags: Flags specifiers
- * @width: Width specifier
- * @precision: Precision specifier
- * @size: Size specifier
+ * write_unsgnd - Writes unsigned number
+ * @is_negative: Number that show if sign is negative
+ * @ind: Index 
+ * @buffer: Array 
+ * @flags: Flags 
+ * @width: Width 
+ * @precision: Precision
+ * @size: Size
  *
- * Return: Number of written chars.
+ * Return: Number 
  */
 int write_unsgnd(int is_negative, int ind,
 	char buffer[],
@@ -463,17 +463,17 @@ int write_unsgnd(int is_negative, int ind,
 }
 
 /**
- * write_pointer - Write a memory address
- * @buffer: Arrays of chars
- * @ind: Index at which the number starts in the buffer
- * @length: Length of number
- * @width: Wwidth specifier
- * @flags: Flags specifier
- * @padd: Char representing the padding
- * @extra_c: Char representing extra char
- * @padd_start: Index at which padding should start
+ * write_pointer - Writes apointer
+ * @buffer: Arrays 
+ * @ind: Index 
+ * @length: Length 
+ * @width: Width 
+ * @flags: Flags 
+ * @padd: Characters that show padding
+ * @extra_c: extra characters
+ * @padd_start: Index at which padding starts
  *
- * Return: Number of written chars.
+ * Return: Number 
  */
 int write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start)
