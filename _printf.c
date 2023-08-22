@@ -2,9 +2,9 @@
 
 
 /**
- * _printf - Printf function
- * @format: format.
- * Return: Printed chars.
+ * _printf - The printf function
+ * @format: The format
+ * Return: The characters that are printed
  */
 int _printf(const char *format, ...)
 {
