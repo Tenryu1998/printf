@@ -1,52 +1,50 @@
 #include "main.h"
 
-
 /**
- * _printf - The printf function
- * @format: The format
- * Return: The characters that are printed
+ * _printf -  produces output according to a format.
+ * @format: The format of the output
+ * Return: The number of characters that are printed
  */
 int _printf(const char *format, ...)
 {
-	int i, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
-	va_list list;
-	char buffer[BUFF_SIZE];
+	int printedChars;
+	int i = 0, ni = 0, j = 0, specFound = 0;
 
+	va_list args;
+
+	specifierToFunc s2f[] = {
+		{"%c", print_char},
+		{"%s", print_string},
+		{"%%", print_percent}
+	};
+
+	va_start(args, format);
 	if (format == NULL)
-		return (-1);
+                return (-1);
 
-	va_start(list, format);
 
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
+		ni = i + 1;
+		specFound = 0;
+		for (j = 0; j < 14; j++)
 		{
-			buffer[buff_ind++] = format[i];
-			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[i], 1);*/
-			printed_chars++;
+			if (s2f[j].specifier[0] == format[i] && s2f[j].specifier[1] == format[ni])
+			{
+				printedChars += s2f[j].printFunc(args);
+				i += 2;
+				specFound = 1;
+				break;
+			}
 		}
+		if (specFound == 1)
+			continue;
 		else
 		{
-			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
-			++i;
-			printed = handle_print(format, &i, list, buffer,
-				flags, width, precision, size);
-			if (printed == -1)
-				return (-1);
-			printed_chars += printed;
+			_putchar(format[i]);
+			printedChars += 1;
 		}
 	}
-
-	print_buffer(buffer, &buff_ind);
-
-	va_end(list);
-
-	return (printed_chars);
+	va_end(args);
+	return (printedChars);
 }
