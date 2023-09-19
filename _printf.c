@@ -11,10 +11,12 @@ int _printf(const char *format, ...)
 
 	va_list args;
 
-	specifierToFunc s2f[3] = {
+	specifierToFunc s2f[5] = {
 		{"%c", print_char},
 		{"%s", print_string},
-		{"%%", print_percent}
+		{"%%", print_percent},
+		{"%i", print_integer},
+		{"%d", print_decimal}
 	};
 
 	va_start(args, format);
@@ -22,11 +24,11 @@ int _printf(const char *format, ...)
                 return (-1);
 
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; )
 	{
 		ni = i + 1;
 		specFound = 0;
-		for (j = 0; j < 3; j++)
+		for (j = 0; j < 5; j++)
 		{
 			if (s2f[j].specifier[0] == format[i] && s2f[j].specifier[1] == format[ni])
 			{
@@ -42,6 +44,7 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]);
 			printedChars += 1;
+			i++;
 		}
 	}
 	va_end(args);
