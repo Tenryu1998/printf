@@ -7,37 +7,31 @@
  */
 int print_decimal(va_list arg)
 {
-	int Number = va_arg(arg, int);
-	int lastDigit = Number % 10;
-	int number = Number / 10;
-	int digit, i = 1, decimalPlaces = 1;
+	char buffer[32];
+	int i = 0, len, printedChars = 0;
+	int num = va_arg(arg, int);
 
-	if (lastDigit < 0)
-	{
+	if (num == 0) {
+		_putchar('0');
+		printedChars++;
+		return printedChars;
+	}
+
+	if (num < 0) {
 		_putchar('-');
-		number = number * -1;
-		lastDigit = lastDigit * -1;
-		i++;
+		printedChars++;
+		num = -num;
 	}
 
-	Number = number;
-
-	if (Number > 0)
-	{
-		for ( ; (number % 10) != 0; decimalPlaces++)
-		{
-			number = Number / power(10, decimalPlaces);
-		}
-		number = Number;
-		for ( ; decimalPlaces > 0; decimalPlaces--)
-		{
-			digit = number / power(10, decimalPlaces);
-			_putchar(digit + '0');
-			number = number - (digit * power(10, decimalPlaces));
-			i++;
-		}
+	while (num > 0) {
+		buffer[i++] = (num % 10) + '0';
+		num /= 10;
 	}
 
-	_putchar(lastDigit + '0');
-	return (i);
+	for (len = i - 1; len >= 0; len--) {
+		_putchar(buffer[len]);
+		printedChars++;
+	}
+
+	return (printedChars);
 }
