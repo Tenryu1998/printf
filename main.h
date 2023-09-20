@@ -20,6 +20,7 @@ int print_string(va_list arg);
 int print_percent(va_list arg);
 int print_decimal(va_list arg);
 int print_integer(va_list arg);
+int print_binary(va_list arg);
 int _putchar(char c);
 int _strlen(char *s);
 int power(int base, int exponent);
