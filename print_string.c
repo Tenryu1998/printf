@@ -11,6 +11,8 @@ int print_string(va_list arg)
 	int i, strlen = 0;
 
 	str = va_arg(arg, char *);
+	if (str == NULL)
+		str = "(null)";
 
 	if (str != NULL)
 	{
