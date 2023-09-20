@@ -38,6 +38,12 @@ int _printf(const char *format, ...)
 				specFound = 1;
 				break;
 			}
+			if (s2f[j].specifier[0] == format[i] && s2f[j].specifier[1] != format[ni])
+			{
+				i++;
+				break;
+			}
+
 		}
 		if (specFound == 1)
 			continue;
