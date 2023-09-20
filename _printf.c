@@ -9,34 +9,33 @@
 
 int handle_specifier(const char *format, specifierToFunc s2f[], va_list arg)
 {
-	int i = 0, j = 0, specFound = 0, p = 0;
+	int i = 0, j = 0, specFound = 0, p = 0, ni = 0;
 
 	for (i = 0; format[i] != '\0'; )
 	{
+		ni = i + 1;
 		specFound = 0;
 		for (j = 0; j < 6; j++)
 		{
-			if (s2f[j].spec[0] == format[i])
-			{
-				if (s2f[j].spec[1] == format[i + 1])
+			if (format[ni] != '\0')
+			{	
+				if (s2f[j].spec[0] == format[i] && s2f[j].spec[1] == format[ni])
 				{
 					p += s2f[j].printFunc(arg);
+					specFound = 1;
 					i += 2;
+					break;
 				}
-				else
-					i++;
-				specFound = 1;
-				break;
 			}
 		}
 		if (specFound == 1)
 			continue;
-		if (format[i] != '\0')
+		if (format[i] != '%')
 		{
 			_putchar(format[i]);
 			p += 1;
-			i++;
 		}
+		i++;
 	}
 	return (p);
 }
