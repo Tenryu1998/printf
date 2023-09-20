@@ -11,24 +11,28 @@ int print_decimal(va_list arg)
 	int i = 0, len, printedChars = 0;
 	int num = va_arg(arg, int);
 
-	if (num == 0) {
+	if (num == 0)
+	{
 		_putchar('0');
 		printedChars++;
-		return printedChars;
+		return (printedChars);
 	}
 
-	if (num < 0) {
+	if (num < 0)
+	{
 		_putchar('-');
 		printedChars++;
 		num = -num;
 	}
 
-	while (num > 0) {
+	while (num > 0)
+	{
 		buffer[i++] = (num % 10) + '0';
 		num /= 10;
 	}
 
-	for (len = i - 1; len >= 0; len--) {
+	for (len = i - 1; len >= 0; len--)
+	{
 		_putchar(buffer[len]);
 		printedChars++;
 	}

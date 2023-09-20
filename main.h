@@ -9,7 +9,7 @@
 /** STRUCTS */
 typedef struct format
 {
-	char *specifier;
+	char *spec;
 	int (*printFunc)();
 } specifierToFunc;
 
