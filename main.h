@@ -24,5 +24,5 @@ int print_binary(va_list arg);
 int _putchar(char c);
 int _strlen(char *s);
 int power(int base, int exponent);
-
+int handle_specifier(const char *format, specifierToFunc s2f[], va_list arg);
 #endif
