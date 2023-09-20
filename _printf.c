@@ -41,9 +41,12 @@ int _printf(const char *format, ...)
 		}
 		if (specFound == 1)
 			continue;
-		_putchar(format[i]);
-		printedChars += 1;
-		i++;
+		if (format[i] != '\0')
+		{
+			_putchar(format[i]);
+			printedChars += 1;
+			i++;
+		}
 	}
 	va_end(args);
 	return (printedChars);
