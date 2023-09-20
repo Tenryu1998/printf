@@ -18,7 +18,7 @@ int handle_specifier(const char *format, specifierToFunc s2f[], va_list arg)
 		for (j = 0; j < 6; j++)
 		{
 			if (format[ni] != '\0')
-			{	
+			{
 				if (s2f[j].spec[0] == format[i] && s2f[j].spec[1] == format[ni])
 				{
 					p += s2f[j].printFunc(arg);
