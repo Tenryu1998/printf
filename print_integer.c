@@ -7,35 +7,39 @@
  */
 int print_integer(va_list arg)
 {
-	char buffer[32];
-	int i = 0, len, printedChars = 0;
-	int num = va_arg(arg, int);
+	int n = va_arg(args, int);
+	int num, lastDigit = n % 10, digit, decimalPlaces = 1;
+	int  printedChars = 1;
 
-	if (num == 0)
-	{
-		_putchar('0');
-		printedChars++;
-		return (printedChars);
-	}
+	n = n / 10;
+	num = n;
 
-	if (num < 0)
+	if (lastDigit < 0)
 	{
 		_putchar('-');
-		printedChars++;
 		num = -num;
-	}
-
-	while (num > 0)
-	{
-		buffer[i++] = (num % 10) + '0';
-		num /= 10;
-	}
-
-	for (len = i - 1; len >= 0; len--)
-	{
-		_putchar(buffer[len]);
+		n = -n;
+		lastDigit = -lastDigit;
 		printedChars++;
 	}
+	if (num > 0)
+	{
+		while (num / 10 != 0)
+		{
+			decimalPlaces++;
+			num = num / 10;
+		}
+		num = n;
+		while (decimalPlaces > 0)
+		{
+			digit = num / (10 * decimalPlaces);
+			_putchar(digit + '0');
+			num = num - (digit * (10 * decimalPlaces);
+			decimalPlaces++;
+			printedChars++;
+		}
+	}
+	_putchar(lastDigit + '0');
 
 	return (printedChars);
 }

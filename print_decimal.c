@@ -2,40 +2,45 @@
 
 /**
  * print_decimal - prints arg as a signed decimal
- * @arg: value pased
- * Return: 1.
+ * @arg: value passed
+ * Return: number of characters printed.
  */
-int print_decimal(va_list arg)
+int print_decimal(va_list args)
 {
-	char buffer[32];
-	int i = 0, len, printedChars = 0;
-	int num = va_arg(arg, int);
+	int n = va_arg(args, int);
+	int num, last = n % 10, digit;
+	int  i = 1;
+	int exp = 1;
 
-	if (num == 0)
-	{
-		_putchar('0');
-		printedChars++;
-		return (printedChars);
-	}
+	n = n / 10;
+	num = n;
 
-	if (num < 0)
+	if (last < 0)
 	{
 		_putchar('-');
-		printedChars++;
 		num = -num;
+		n = -n;
+		last = -last;
+		i++;
 	}
-
-	while (num > 0)
+	if (num > 0)
 	{
-		buffer[i++] = (num % 10) + '0';
-		num /= 10;
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
 	}
+	_putchar(last + '0');
 
-	for (len = i - 1; len >= 0; len--)
-	{
-		_putchar(buffer[len]);
-		printedChars++;
-	}
-
-	return (printedChars);
+	return (i);
 }
