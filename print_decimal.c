@@ -5,9 +5,9 @@
  * @arg: value passed
  * Return: number of characters printed.
  */
-int print_decimal(va_list args)
+int print_decimal(va_list arg)
 {
-	int n = va_arg(args, int);
+	int n = va_arg(arg, int);
 	int num, last = n % 10, digit;
 	int  i = 1;
 	int exp = 1;
