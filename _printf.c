@@ -11,6 +11,9 @@ int handle_specifier(const char *format, specifierToFunc s2f[], va_list arg)
 {
 	int i = 0, j = 0, specFound = 0, p = 0, ni = 0;
 
+	if (format[0] == '%' && format[1] == '\0')
+		return (-1);
+
 	for (i = 0; format[i] != '\0'; )
 	{
 		ni = i + 1;
@@ -30,11 +33,8 @@ int handle_specifier(const char *format, specifierToFunc s2f[], va_list arg)
 		}
 		if (specFound == 1)
 			continue;
-		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			p += 1;
-		}
+		_putchar(format[i]);
+		p += 1;
 		i++;
 	}
 	return (p);
