@@ -1,45 +1,44 @@
 #include "main.h"
-
 /**
- * print_integer - prints arg as an integer
- * @arg: value pased
- * Return: 1.
+ * print_integer - prints integer
+ * @arg: arguments
+ * Return: number of characters
  */
 int print_integer(va_list arg)
 {
-	int n = va_arg(args, int);
-	int num, lastDigit = n % 10, digit, decimalPlaces = 1;
-	int  printedChars = 1;
+	int n = va_arg(arg, int);
+	int num, last = n % 10, digit, exp = 1;
+	int  i = 1;
 
 	n = n / 10;
 	num = n;
 
-	if (lastDigit < 0)
+	if (last < 0)
 	{
 		_putchar('-');
 		num = -num;
 		n = -n;
-		lastDigit = -lastDigit;
-		printedChars++;
+		last = -last;
+		i++;
 	}
 	if (num > 0)
 	{
 		while (num / 10 != 0)
 		{
-			decimalPlaces++;
+			exp = exp * 10;
 			num = num / 10;
 		}
 		num = n;
-		while (decimalPlaces > 0)
+		while (exp > 0)
 		{
-			digit = num / (10 * decimalPlaces);
+			digit = num / exp;
 			_putchar(digit + '0');
-			num = num - (digit * (10 * decimalPlaces);
-			decimalPlaces++;
-			printedChars++;
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
 		}
 	}
-	_putchar(lastDigit + '0');
+	_putchar(last + '0');
 
-	return (printedChars);
+	return (i);
 }
